@@ -1,0 +1,161 @@
+% ASSIGNMENT 5 MLE FOR THE FREQUENCY OF A SIGNAL
+
+\section{MLE for the Frequency of a Signal}
+
+\lhead{Advanced Signal Processing}
+\rhead{MLE for the Frequency of a Signal}
+
+1. We start with Equation \ref{eqn:ch51}
+
+\begin{equation}
+    J^{\prime}\left(\alpha_{1}, \alpha_{2}, f_{0}\right)=\left(\mathbf{x}-\alpha_{1} \mathbf{c}-\alpha_{2} \mathbf{s}\right)^{T}\left(\mathbf{x}-\alpha_{1} \mathbf{c}-\alpha_{2} \mathbf{s}\right)
+    \label{eqn:ch51}
+\end{equation}
+
+\noindent
+where \alpha_{1}=A \cos (\phi), \alpha_{2}=-A \sin (\phi), \mathbf{c}=\left[1, \cos \left(2 \pi f_{0}\right), \ldots, \cos \left(2 \pi f_{0}(B-1)\right)\right]^{T}  \text{and}  \\\mathbf{s}= \left[0, \sin \left(2 \pi f_{0}\right), \ldots, \sin \left(2 \pif_{0}(B-1)\right)\right]^{T}.
+
+\noindent
+\left(\boldsymbol{x}-\alpha_{1} c-\alpha_{2} s\right) \text {can be rewritten as in Equation \ref{eqn:ch52}}
+\vspace{-0.2cm}
+\begin{center}
+\begin{equation}
+\left(\boldsymbol{x}-\alpha_{1} c-\alpha_{2} s\right)=
+\left(\begin{array}{c}
+x[0]-A \cos (\phi) \cos (0)+A \sin (\phi) \sin (0) \\
+x[1]-A \cos (\phi) \cos \left(2 \pi f_{0}\right)+A \sin (\phi) \sin \left(2 \pi f_{0}\right) \\
+\vdots \\
+x[N-1]-A \cos (\phi) \cos \left(2 \pi f_{0}(N-1)\right)+A \sin (\phi) \sin \left(2 \pi f_{0}(N-1)\right)
+\end{array}\right)
+\label{eqn:ch52}
+\end{equation}
+\end{center}
+
+\noindent
+\begin{flushleft}
+\text{Using the trigonometric identity $\cos (a+b)=\cos (a) \cos (b)+\sin (a) \sin (b)$, this can be rewritten again as in \\Equation \ref{eqn:ch53}.}
+\end{flushleft}
+
+\vspace{-0.2cm}
+\begin{center}
+\begin{equation}
+\left(\boldsymbol{x}-\alpha_{1} c-\alpha_{2} s\right)=
+\left(\begin{array}{c}
+x[0]-A \cos (0+\phi) \\
+x[1]-A \cos \left(2 \pi f_{0}+\phi\right) \\
+\vdots \\
+\left.x[N-1]-A \cos \left(2 \pi f_{0}(N-1)+\phi\right)\right)
+\end{array}\right)
+\label{eqn:ch53}
+\end{equation}
+\end{center}
+
+\noindent
+\begin{flushleft}
+Therefore, Equation \ref{eqn:ch51} can be rewritten as below to obtain the desired result in Equation \ref{eqn:ch5res}.
+\end{flushleft}
+\vspace{-0.5cm}
+\begin{center}
+\begin{equation}
+J^{\prime}\left(\alpha_{1}, \alpha_{2}, f_{0}\right)= \left(\begin{array}{c}
+x[0]-A \cos (0+\phi) \\
+x[1]-A \cos \left(2 \pi f_{0}+\phi\right) \\
+\vdots \\
+\left.x[N-1]-A \cos \left(2 \pi f_{0}(N-1)+\phi\right)\right)
+\end{array}\right)^{T}\left(\begin{array}{c}
+x[0]-A \cos (0+\phi) \\
+x[1]-A \cos \left(2 \pi f_{0}+\phi\right) \\
+\vdots \\
+\left.x[N-1]-A \cos \left(2 \pi f_{0}(N-1)+\phi\right)\right)
+\end{array}\right)
+\end{equation}
+\end{center}
+\vspace{-0.4cm}
+\begin{center}
+\begin{equation}
+=\left(x[0]-A \cos (0+\phi) \ldots x[N-1]-A \cos \left(2 \pi f_{o}(N-1)+\phi\right)\right)^{2}
+\end{equation}
+\end{center}
+\vspace{-1cm}
+\begin{center}
+\begin{equation}
+=\sum_{n=0}^{N-1}\left(x[n]-A \cos \left(2 \pi f_{0} n+\phi\right)\right)^{2}
+\end{equation}
+\end{center}
+\vspace{-0.8cm}
+\begin{center}
+\begin{equation}
+J^{\prime}\left(\alpha_{1}, \alpha_{2}, f_{0}\right)=J(\boldsymbol{\theta})
+\label{eqn:ch5res}
+\end{equation}
+\end{center}
+
+\begin{flushleft}
+2. Equation \ref{eqn:ch51} can be rewritten $J^{\prime}\left(\boldsymbol{\alpha}, f_{0}\right)=(\boldsymbol{x}-\boldsymbol{H} \boldsymbol{\alpha})^{T}(\boldsymbol{x}-\boldsymbol{H} \boldsymbol{\alpha})=\boldsymbol{x} \boldsymbol{x}^{T}-\boldsymbol{2} \boldsymbol{x}^{T} \boldsymbol{H} \boldsymbol{\alpha}+\boldsymbol{\alpha}^{T} \boldsymbol{H}^{T} \boldsymbol{H} \boldsymbol{\alpha}$, and the minimising solution can be found as below, obtaining the result in Equation \ref{ch5fin}.\end{flushleft}
+\vspace{-0.05cm}
+\begin{equation}
+\frac{\partial J(\boldsymbol{\alpha})}{\partial \boldsymbol{\alpha}}=-2 \boldsymbol{H}^{\boldsymbol{T}} \boldsymbol{x} + 2 \boldsymbol{H}^{T}\boldsymbol{H} \boldsymbol{\alpha}=0
+\end{equation}
+\vspace{-0.2cm}
+\begin{equation}
+\hat{\boldsymbol{\alpha}}=\left(\boldsymbol{H}^{\boldsymbol{T}} \boldsymbol{H}\right)^{-1} \boldsymbol{H}^{\boldsymbol{T}} \boldsymbol{x}
+\end{equation}
+\vspace{-0.2cm}
+\begin{equation}
+J\left(\hat{\boldsymbol{\alpha}}, f_{0}\right)=\boldsymbol{x} \boldsymbol{x}^{\boldsymbol{T}}-\boldsymbol{2} \boldsymbol{x}^{\boldsymbol{T}} \boldsymbol{H} \hat{\boldsymbol{\alpha}}+\hat{\boldsymbol{\alpha}}^{\boldsymbol{T}} \boldsymbol{H}^{\boldsymbol{T}} \boldsymbol{H} \hat{\boldsymbol{\alpha}}
+\end{equation}
+\vspace{-0.2cm}
+\begin{equation}
+=\boldsymbol{x} \boldsymbol{x}^{\boldsymbol{T}}-\mathbf{2} \boldsymbol{x}^{\boldsymbol{T}} \boldsymbol{H}\left(\boldsymbol{H}^{\boldsymbol{T}} \boldsymbol{H}\right)^{-1} \boldsymbol{H}^{\boldsymbol{T}} \boldsymbol{x}+\left(\left(\boldsymbol{H}^{\boldsymbol{T}} \boldsymbol{H}\right)^{-1} \boldsymbol{H}^{\boldsymbol{T}} \boldsymbol{x}\right)^{\boldsymbol{T}} \boldsymbol{H}^{\boldsymbol{T}} \boldsymbol{H}\left(\boldsymbol{H}^{\boldsymbol{T}} \boldsymbol{H}\right)^{-1} \boldsymbol{H}^{\boldsymbol{T}} \boldsymbol{x}
+\end{equation}
+\vspace{-0.2cm}
+\begin{equation}
+J\left(\hat{\boldsymbol{\alpha}}, f_{0}\right)=\boldsymbol{x} \boldsymbol{x}^{\boldsymbol{T}}-\boldsymbol{x}^{\boldsymbol{T}} \boldsymbol{H}\left(\boldsymbol{H}^{\boldsymbol{T}} \boldsymbol{H}\right)^{-1} \boldsymbol{H}^{\boldsymbol{T}} \boldsymbol{x}
+\label{ch5fin}
+\end{equation}
+
+\begin{flushleft}
+3. Letting $\mathbf{H}=[\mathbf{c}, \mathbf{s}]$ the MLE of the frequency, $f_{0}$ can be found by verifying that $\boldsymbol{x}^{T} \boldsymbol{H}\left(\boldsymbol{H}^{T} \boldsymbol{H}\right)^{-1} \boldsymbol{H}^{T} \boldsymbol{x}$ can be rewritten as in Equation \ref{eqn:ch5x}, since it is known that maximising $\boldsymbol{x}^{T} \boldsymbol{H}\left(\boldsymbol{H}^{T} \boldsymbol{H}\right)^{-1} \boldsymbol{H}^{T} \boldsymbol{x}$ minimises $J^{\prime}\left(\boldsymbol{\alpha}, f_{0}\right)$.
+\end{flushleft}}
+
+\begin{equation}
+\left[\begin{array}{l}
+\boldsymbol{c}^{T} \boldsymbol{x} \\
+\boldsymbol{s}^{T} \boldsymbol{x}
+\end{array}\right]^{T}=\left[\begin{array}{ll}
+\boldsymbol{c}^{T} \boldsymbol{c} & \boldsymbol{c}^{T} \boldsymbol{s} \\
+\boldsymbol{s}^{T} \boldsymbol{c} & \boldsymbol{s}^{T} \boldsymbol{s}
+\end{array}\right]^{-1}\left[\begin{array}{l}
+\boldsymbol{c}^{T} \boldsymbol{x} \\
+\boldsymbol{s}^{T} \boldsymbol{x}
+\end{array}\right]
+\label{eqn:ch5x}
+\end{equation}
+\vspace{-0.2cm}
+\begin{equation}
+\boldsymbol{H}^{T} \boldsymbol{x}=\left[\begin{array}{l}
+\boldsymbol{c}^{T} \boldsymbol{x} \\
+\boldsymbol{s}^{T} \boldsymbol{x}
+\end{array}\right] \Leftrightarrow\left(\boldsymbol{H}^{T} \boldsymbol{x}\right)^{T}=\boldsymbol{x}^{T} \boldsymbol{H}=\left[\begin{array}{l}
+\boldsymbol{c}^{T} \boldsymbol{x} \\
+\boldsymbol{s}^{T} \boldsymbol{x}
+\end{array}\right]^{T}
+\end{equation}
+\vspace{-0.4cm}
+\begin{flushleft}
+Therefore, the desired condition is proved as shown in Equation \ref{eqn:ch5final}.
+\end{flushleft}
+\vspace{-0.05cm}
+\begin{equation}
+\boldsymbol{x}^{T} \boldsymbol{H}\left(\boldsymbol{H}^{T} \boldsymbol{H}\right)^{-1} \boldsymbol{H}^{T} \boldsymbol{x}=\left[\begin{array}{c}
+\boldsymbol{c}^{T} \boldsymbol{x} \\
+\boldsymbol{s}^{T} \boldsymbol{x}
+\end{array}\right]^{T}\left[\begin{array}{cc}
+\boldsymbol{c}^{T} \boldsymbol{c} & \boldsymbol{c}^{T} \boldsymbol{s} \\
+\boldsymbol{s}^{T} \boldsymbol{c} & \boldsymbol{s}^{T} \boldsymbol{s}
+\end{array}\right]^{-1}\left[\begin{array}{c}
+\boldsymbol{c}^{T} \boldsymbol{x} \\
+\boldsymbol{s}^{T} \boldsymbol{x}
+\end{array}\right]
+\label{eqn:ch5final}
+\end{equation}

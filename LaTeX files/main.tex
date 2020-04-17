@@ -1,0 +1,91 @@
+% MAIN DOCUMENT (COMBINES INDIVIDUAL .tex FILES)%
+
+%----------------------PACKAGES----------------------%
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{siunitx}
+\usepackage{caption}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{subcaption}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage[shortlabels]{enumitem,kantlipsum}
+\usepackage{subfig}
+\usepackage[demo]{graphicx}
+\usepackage{subcaption}
+\usepackage{multirow}
+\usepackage{float}
+\usepackage{enumitem}
+\usepackage{amsmath,amssymb}
+\usepackage{makecell}
+\usepackage{titlesec}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\dd}[1]{\mathrm{d}#1}
+\renewcommand{\labelenumii}{\textbf{\theenumii}}
+\renewcommand{\theenumii}{\textbf{\theenumi.\arabic{enumii}.}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}m{#1}}
+% redefine section and subsection heading sizes
+\titleformat{\section}{\large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{1em}{}
+\def\therefore{\boldsymbol{\text{ }
+\leavevmode
+\lower0.4ex\hbox{$\cdot$}
+\kern-.5em\raise0.7ex\hbox{$\cdot$}
+\kern-0.55em\lower0.4ex\hbox{$\cdot$}
+\thinspace\text{ }}}
+%----------------------MARGINS-----------------------%
+\usepackage[a4paper, total={7in, 10in}]{geometry}
+\setlength{\headheight}{30pt}
+
+%-------------------HEADER & FOOTER------------------%
+\usepackage{fancyhdr}
+\renewcommand{\headrulewidth}{0pt}
+\pagestyle{fancy}
+\cfoot{\thepage}
+
+\begin{document}
+
+%----------------TITLE PAGE & CONTENTS---------------%
+
+% Title page
+\input{title.tex}
+
+\setcounter{tocdepth}{2}
+% Table of contents
+\newpage
+\tableofcontents
+
+%-------------------MAIN DOCUMENT-------------------%
+\clearpage
+\setcounter{secnumdepth}{3}
+\newpage
+
+% Assignment 1
+\newpage
+\input{assignment1.tex}
+
+% Assignment 2
+\newpage
+\input{assignment2.tex}
+
+% Assignment 3
+\newpage
+\input{assignment3.tex}
+
+% Assignment 4
+\newpage
+\input{assignment4.tex}
+
+% Assignment 5
+\newpage
+\input{assignment5.tex}
+
+% Nomenclature
+\newpage
+\input{nomenclature}
+
+\end{document}
